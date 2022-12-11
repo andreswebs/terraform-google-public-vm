@@ -10,7 +10,13 @@ Creates a VM with a public IP in GCP.
 Example:
 
 ```hcl
-
+module "vm" {
+  source      = "github.com/andreswebs/terraform-google-public-vm"
+  name        = var.name
+  region      = var.region
+  zone        = var.zone
+  domain_name = var.domain_name
+}
 ```
 
 
@@ -33,7 +39,7 @@ Example:
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_network_info"></a> [network\_info](#module\_network\_info) | andreswebs/network-data/google | n/a |
+| <a name="module_network_info"></a> [network\_info](#module\_network\_info) | andreswebs/network-data/google | 0.1.0 |
 
 ## Outputs
 
