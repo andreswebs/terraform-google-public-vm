@@ -32,14 +32,14 @@ module "vm" {
 | <a name="input_name"></a> [name](#input\_name) | VM name | `string` | n/a | yes |
 | <a name="input_network_tags"></a> [network\_tags](#input\_network\_tags) | Additional VM network tags | `list(string)` | `[]` | no |
 | <a name="input_project_network"></a> [project\_network](#input\_project\_network) | Project network to use | `string` | `"default"` | no |
-| <a name="input_region"></a> [region](#input\_region) | Compute Region | `string` | n/a | yes |
+| <a name="input_region"></a> [region](#input\_region) | Compute region | `string` | n/a | yes |
 | <a name="input_zone"></a> [zone](#input\_zone) | Compute zone | `string` | n/a | yes |
 
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_network_info"></a> [network\_info](#module\_network\_info) | andreswebs/network-data/google | 0.1.0 |
+| <a name="module_network_info"></a> [network\_info](#module\_network\_info) | andreswebs/network-info/google | 0.1.0 |
 
 ## Outputs
 

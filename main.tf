@@ -11,8 +11,8 @@ locals {
 }
 
 module "network_info" {
-  source          = "andreswebs/network-data/google"
-  version = "0.1.0"
+  source          = "andreswebs/network-info/google"
+  version         = "0.1.0"
   project_network = var.project_network
 }
 

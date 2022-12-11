@@ -17,7 +17,7 @@ variable "machine_type" {
 
 variable "region" {
   type        = string
-  description = "Compute Region"
+  description = "Compute region"
 }
 
 variable "zone" {
