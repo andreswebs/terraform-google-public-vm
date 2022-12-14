@@ -48,3 +48,21 @@ variable "domain_name" {
   description = "(Optional) Domain name used for the host"
   default     = null
 }
+
+variable "firewall_allow_ssh" {
+  type        = bool
+  description = "(Optional) Allow external SSH traffic?"
+  default     = true
+}
+
+variable "firewall_allow_web" {
+  type        = bool
+  description = "(Optional) Allow external web traffic (HTTP and HTTPS)?"
+  default     = true
+}
+
+variable "external_access_ip_whitelist" {
+  type        = list(string)
+  description = "List of IPs allowed to SSH"
+  default     = []
+}
