@@ -17,3 +17,8 @@ output "external_ip" {
   value       = google_compute_address.this.address
   description = "Instance external IP"
 }
+
+output "hostname" {
+  value       = google_compute_instance.this.hostname
+  description = "Instance hostname"
+}

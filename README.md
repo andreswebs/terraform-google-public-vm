@@ -49,6 +49,7 @@ module "vm" {
 | Name | Description |
 |------|-------------|
 | <a name="output_external_ip"></a> [external\_ip](#output\_external\_ip) | Instance external IP |
+| <a name="output_hostname"></a> [hostname](#output\_hostname) | Instance hostname |
 | <a name="output_instance"></a> [instance](#output\_instance) | The `google_compute_instance` resource |
 | <a name="output_internal_ip"></a> [internal\_ip](#output\_internal\_ip) | Instance internal IP |
 | <a name="output_service_account"></a> [service\_account](#output\_service\_account) | The `google_service_account` resource |
