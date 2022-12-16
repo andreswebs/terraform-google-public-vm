@@ -66,3 +66,16 @@ variable "external_access_ip_whitelist" {
   description = "List of IPs allowed to SSH"
   default     = []
 }
+
+variable "extra_disks" {
+  type = list(object({
+    name     = string
+    zone     = string
+    type     = optional(string, "pd-ssd")
+    size     = optional(number, 50)
+    snapshot = optional(string, null)
+  }))
+
+  description = "(Optional) List of additional disks to attach to the instance"
+  default     = []
+}

@@ -13,6 +13,7 @@ data "google_compute_image" "ubuntu_lts" {
 locals {
   initial_disk_image = var.initial_disk_image == "" || var.initial_disk_image == null ? data.google_compute_image.ubuntu_lts.self_link : var.initial_disk_image
   hostname           = var.domain_name != null && var.domain_name != "" ? "${var.name}.${var.domain_name}" : null
+  extra_disks        = { for each in var.extra_disks : each.name => each }
 }
 
 resource "google_compute_address" "this" {
@@ -28,6 +29,24 @@ resource "google_compute_address" "this_internal" {
   subnetwork   = data.google_compute_subnetwork.this.id
 }
 
+resource "google_compute_disk" "this" {
+  for_each = local.extra_disks
+
+  name = each.value.name
+  type = each.value.type
+  zone = each.value.zone
+  size = each.value.size
+
+  snapshot = each.value.snapshot
+
+  lifecycle {
+    ignore_changes = [
+      snapshot
+    ]
+  }
+
+}
+
 resource "google_compute_instance" "this" {
   name         = var.name
   machine_type = var.machine_type
@@ -40,6 +59,15 @@ resource "google_compute_instance" "this" {
     initialize_params {
       size  = var.disk_size
       image = local.initial_disk_image
+    }
+  }
+
+  dynamic "attached_disk" {
+    for_each = google_compute_disk.this
+    content {
+      source      = attached_disk.value.self_link
+      device_name = attached_disk.key
+      mode        = "READ_WRITE"
     }
   }
 

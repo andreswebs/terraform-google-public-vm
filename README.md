@@ -28,6 +28,7 @@ module "vm" {
 | <a name="input_disk_size"></a> [disk\_size](#input\_disk\_size) | Boot disk size | `number` | `50` | no |
 | <a name="input_domain_name"></a> [domain\_name](#input\_domain\_name) | (Optional) Domain name used for the host | `string` | `null` | no |
 | <a name="input_external_access_ip_whitelist"></a> [external\_access\_ip\_whitelist](#input\_external\_access\_ip\_whitelist) | List of IPs allowed to SSH | `list(string)` | `[]` | no |
+| <a name="input_extra_disks"></a> [extra\_disks](#input\_extra\_disks) | (Optional) List of additional disks to attach to the instance | <pre>list(object({<br>    name     = string<br>    zone     = string<br>    type     = optional(string, "pd-ssd")<br>    size     = optional(number, 50)<br>    snapshot = optional(string, null)<br>  }))</pre> | `[]` | no |
 | <a name="input_firewall_allow_ssh"></a> [firewall\_allow\_ssh](#input\_firewall\_allow\_ssh) | (Optional) Allow external SSH traffic? | `bool` | `true` | no |
 | <a name="input_firewall_allow_web"></a> [firewall\_allow\_web](#input\_firewall\_allow\_web) | (Optional) Allow external web traffic (HTTP and HTTPS)? | `bool` | `true` | no |
 | <a name="input_initial_disk_image"></a> [initial\_disk\_image](#input\_initial\_disk\_image) | VM initial disk image | `string` | `null` | no |
@@ -71,6 +72,7 @@ No modules.
 |------|------|
 | [google_compute_address.this](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_address) | resource |
 | [google_compute_address.this_internal](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_address) | resource |
+| [google_compute_disk.this](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_disk) | resource |
 | [google_compute_firewall.external_ssh](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_firewall) | resource |
 | [google_compute_firewall.external_web](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_firewall) | resource |
 | [google_compute_instance.this](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_instance) | resource |
