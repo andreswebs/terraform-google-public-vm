@@ -3,9 +3,9 @@ variable "name" {
   description = "VM name"
 }
 
-variable "project_network" {
+variable "subnetwork" {
   type        = string
-  description = "Project network to use"
+  description = "Name of the subnetwork to use"
   default     = "default"
 }
 

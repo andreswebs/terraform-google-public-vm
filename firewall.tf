@@ -1,7 +1,7 @@
 resource "google_compute_firewall" "external_ssh" {
   count   = var.firewall_allow_ssh ? 1 : 0
   name    = "${google_compute_instance.this.name}-external-ssh"
-  network = var.project_network
+  network = data.google_compute_subnetwork.this.network
 
   target_tags = [google_compute_instance.this.name]
 
@@ -17,7 +17,7 @@ resource "google_compute_firewall" "external_ssh" {
 resource "google_compute_firewall" "external_web" {
   count   = var.firewall_allow_web ? 1 : 0
   name    = "${google_compute_instance.this.name}-external-web"
-  network = var.project_network
+  network = data.google_compute_subnetwork.this.network
 
   target_tags = [google_compute_instance.this.name]
 

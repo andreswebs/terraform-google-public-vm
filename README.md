@@ -34,15 +34,13 @@ module "vm" {
 | <a name="input_machine_type"></a> [machine\_type](#input\_machine\_type) | Machine type | `string` | `"e2-standard-2"` | no |
 | <a name="input_name"></a> [name](#input\_name) | VM name | `string` | n/a | yes |
 | <a name="input_network_tags"></a> [network\_tags](#input\_network\_tags) | Additional VM network tags | `list(string)` | `[]` | no |
-| <a name="input_project_network"></a> [project\_network](#input\_project\_network) | Project network to use | `string` | `"default"` | no |
 | <a name="input_region"></a> [region](#input\_region) | Compute region | `string` | n/a | yes |
+| <a name="input_subnetwork"></a> [subnetwork](#input\_subnetwork) | Name of the subnetwork to use | `string` | `"default"` | no |
 | <a name="input_zone"></a> [zone](#input\_zone) | Compute zone | `string` | n/a | yes |
 
 ## Modules
 
-| Name | Source | Version |
-|------|--------|---------|
-| <a name="module_network_info"></a> [network\_info](#module\_network\_info) | andreswebs/network-info/google | 0.1.0 |
+No modules.
 
 ## Outputs
 
@@ -81,6 +79,7 @@ module "vm" {
 | [google_project_iam_member.tracer](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/project_iam_member) | resource |
 | [google_service_account.this](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/service_account) | resource |
 | [google_compute_image.ubuntu_lts](https://registry.terraform.io/providers/hashicorp/google/latest/docs/data-sources/compute_image) | data source |
+| [google_compute_subnetwork.this](https://registry.terraform.io/providers/hashicorp/google/latest/docs/data-sources/compute_subnetwork) | data source |
 | [google_project.this](https://registry.terraform.io/providers/hashicorp/google/latest/docs/data-sources/project) | data source |
 
 [//]: # (END_TF_DOCS)

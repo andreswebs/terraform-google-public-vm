@@ -1,5 +1,10 @@
 data "google_project" "this" {}
 
+data "google_compute_subnetwork" "this" {
+  name   = var.subnetwork
+  region = var.region
+}
+
 data "google_compute_image" "ubuntu_lts" {
   project = "ubuntu-os-cloud"
   family  = "ubuntu-2204-lts"
@@ -10,22 +15,17 @@ locals {
   hostname           = var.domain_name != null && var.domain_name != "" ? "${var.name}.${var.domain_name}" : null
 }
 
-module "network_info" {
-  source          = "andreswebs/network-info/google"
-  version         = "0.1.0"
-  project_network = var.project_network
-}
-
 resource "google_compute_address" "this" {
-  region = var.region
-  name   = "${var.name}-ip"
+  name         = "${var.name}-ip"
+  region       = var.region
+  address_type = "EXTERNAL"
 }
 
 resource "google_compute_address" "this_internal" {
-  region       = var.region
   name         = "${var.name}-internal-ip"
+  region       = var.region
   address_type = "INTERNAL"
-  subnetwork   = module.network_info.subnetwork[var.region].id
+  subnetwork   = data.google_compute_subnetwork.this.id
 }
 
 resource "google_compute_instance" "this" {
@@ -44,7 +44,7 @@ resource "google_compute_instance" "this" {
   }
 
   network_interface {
-    subnetwork = module.network_info.subnetwork[var.region].name
+    subnetwork = data.google_compute_subnetwork.this.name
     network_ip = google_compute_address.this_internal.address
 
     access_config {
