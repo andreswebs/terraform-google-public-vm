@@ -55,6 +55,9 @@ resource "google_compute_instance" "this" {
 
   tags = compact(concat([var.name], var.network_tags))
 
+  metadata_startup_script = var.metadata_startup_script
+  metadata                = var.metadata
+
   boot_disk {
     initialize_params {
       size  = var.disk_size

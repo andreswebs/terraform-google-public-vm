@@ -33,6 +33,8 @@ module "vm" {
 | <a name="input_firewall_allow_web"></a> [firewall\_allow\_web](#input\_firewall\_allow\_web) | (Optional) Allow external web traffic (HTTP and HTTPS)? | `bool` | `true` | no |
 | <a name="input_initial_disk_image"></a> [initial\_disk\_image](#input\_initial\_disk\_image) | VM initial disk image | `string` | `null` | no |
 | <a name="input_machine_type"></a> [machine\_type](#input\_machine\_type) | Machine type | `string` | `"e2-standard-2"` | no |
+| <a name="input_metadata"></a> [metadata](#input\_metadata) | (Optional) Set the `metadata` attribute on the `google_compute_instance` resource | `map(string)` | `null` | no |
+| <a name="input_metadata_startup_script"></a> [metadata\_startup\_script](#input\_metadata\_startup\_script) | Set the `metadata_startup_script` attribute on the `google_compute_instance` resource | `string` | `null` | no |
 | <a name="input_name"></a> [name](#input\_name) | VM name | `string` | n/a | yes |
 | <a name="input_network_tags"></a> [network\_tags](#input\_network\_tags) | Additional VM network tags | `list(string)` | `[]` | no |
 | <a name="input_region"></a> [region](#input\_region) | Compute region | `string` | n/a | yes |

@@ -79,3 +79,15 @@ variable "extra_disks" {
   description = "(Optional) List of additional disks to attach to the instance"
   default     = []
 }
+
+variable "metadata_startup_script" {
+  type        = string
+  description = "Set the `metadata_startup_script` attribute on the `google_compute_instance` resource"
+  default     = null
+}
+
+variable "metadata" {
+  type        = map(string)
+  description = "(Optional) Set the `metadata` attribute on the `google_compute_instance` resource"
+  default     = null
+}
